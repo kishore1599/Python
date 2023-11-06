@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                checkout scmGit(branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vastevenson/jenkins-python-build-test-demo-vs.git']])
+            }
+        }
+        stage('Hello-1') {
+            steps {
+                sh 'python3 app.py'
+            }
+        }
+    }
+}
